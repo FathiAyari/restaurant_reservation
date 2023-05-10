@@ -21,11 +21,11 @@ class AuthServices {
     }
   }
 
-  Future<bool> signUp(String emailController, String passwordController, String name, String role, String cinController) async {
+  Future<bool> signUp(Cusers user) async {
     try {
-      await auth.createUserWithEmailAndPassword(email: emailController, password: passwordController);
+      await auth.createUserWithEmailAndPassword(email: user.email, password: user.password!);
 
-      await saveUser(Cusers(uid: user!.uid, userName: name, email: emailController, role: role, cin: cinController));
+      await saveUser(user);
 
       return true;
     } on FirebaseException catch (e) {
@@ -50,9 +50,9 @@ class AuthServices {
 
   User? get user => auth.currentUser; //pour recuperer l'utilisateur courant
 
-  saveUser(Cusers user) async {
+  saveUser(Cusers cuser) async {
     try {
-      await userCollection.doc(user.uid).set(user.Tojson());
+      await userCollection.doc(user!.uid).set(cuser.Tojson(user!.uid));
     } catch (e) {}
   }
 
@@ -61,8 +61,11 @@ class AuthServices {
 
     storage.write("user", {
       'uid': user.uid,
-      'userName': user.userName,
+      'name': user.name,
+      'last_name': user.last_name,
       'email': user.email,
+      'student_card_number': user.student_card_number,
+      'sexe': user.sexe,
       'cin': user.cin,
       'role': user.role,
     });

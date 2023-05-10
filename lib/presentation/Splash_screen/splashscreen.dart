@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:lottie/lottie.dart';
-import 'package:resservation/reservation/inscription.dart';
+import 'package:resservation/presentation/Authentication/Sign_in/sign_in.dart';
 import 'package:resservation/ressources/dimensions/constants.dart';
 import 'package:resservation/ressources/router/router.dart';
 
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Get.toNamed(AppRouting.homeAdmin);
         }
       } else {
-        Get.to(inscription());
+        Get.to(SignInScreen());
       }
     });
   }
