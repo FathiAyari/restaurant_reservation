@@ -222,6 +222,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                               student_card_number: studentCardController.text,
                                               email: emailcontroller.text,
                                               cin: cinController.text,
+                                              tickets: [],
                                               role: "user"));
 
                                           if (check) {

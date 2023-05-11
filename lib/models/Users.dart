@@ -9,6 +9,7 @@ class Cusers {
   String cin;
   String email;
   String? password;
+  List<dynamic>? tickets;
 
   Cusers({
     this.uid,
@@ -21,6 +22,7 @@ class Cusers {
     required this.cin,
     required this.role,
     this.password,
+    this.tickets,
   });
 
   factory Cusers.fromJson(Map<String, dynamic> json) {
@@ -34,6 +36,7 @@ class Cusers {
       email: json["email"],
       role: json["role"],
       cin: json["cin"],
+      tickets: json["tickets"],
     );
   }
   Map<String, dynamic> Tojson(String id) {
@@ -48,6 +51,7 @@ class Cusers {
       "role": role,
       "cin": cin,
       "password": password,
+      "tickets": [],
     };
   }
 }

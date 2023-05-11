@@ -1,9 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:resservation/ressources/router/router.dart';
 
 Future<void> main() async {
+  await GetStorage.init();
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
@@ -22,14 +25,6 @@ class MyApp extends StatelessWidget {
       ),
       onGenerateRoute: AppRouting.generateRoute,
       initialRoute: AppRouting.splashScreen,
-      /*       routes: {
-            accueil.reservationRoute: (context) => const accueil(),
-            inscription.reservationRoute: (context) => const inscription(),
-            //etudiant.reservationRoute: (context) => const etudiant(),
-            reserver.reservationRoute: (context) => const reserver(),
-            administrateur.reservationRoute: (context) => const administrateur(),
-            validation.reservationRoute: (context) => const validation(),
-          }*/
     );
   }
 }
